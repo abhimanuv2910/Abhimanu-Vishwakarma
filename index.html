@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABHIMANU PAINTS HOUSE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF3E0;
+            color: #333;
+        }
+        
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: #E65100;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar a:hover {
+            background-color: #FF9800;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            font-weight: bold;
+            /*cursor: pointer;*/
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background-color: #f99908;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #5D4037;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #FFCC80;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            margin-right: 20px;
+        }
+        
+        .auth-btn {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .auth-btn:hover {
+            background-color: #FB8C00;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 101;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #FFE0B2;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #FFA000;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #5D4037;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #FFA000;
+            border-radius: 4px;
+        }
+        
+        .submit-btn {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .submit-btn:hover {
+            background-color: #FB8C00;
+        }
+        
+        /* Rest of your existing styles... */
+        header {
+            background-color: #FFB74D;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #E65100;
+        }
+        
+       
+                .paint-selectors {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-top: 10px;
+                }
+                
+                select {
+                    padding: 8px;
+                    background-color: white;
+                    border: 1px solid #FFA000;
+                    border-radius: 4px;
+                    flex-grow: 1;
+                    min-width: 150px;
+                }
+                
+                .brand-section {
+                    background-color: #FFE0B2;
+                    padding: 20px;
+                    margin: 20px 0;
+                    border-radius: 5px;
+                }
+                
+                .brand-title {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    color: #E65100;
+                }
+                
+                .brand-logo {
+                    height: 50px;
+                    width: 50px;
+                    object-fit: contain;
+                }
+                
+                footer {
+                    background-color: #FFB74D;
+                    padding: 20px;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+                
+                a {
+                    color: #E65100;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                
+                a:hover {
+                    text-decoration: underline;
+                }
+                
+        .product{
+            text-align: center;
+            font-size: larger;
+        }
+        /* ... (keep all your other existing styles) ... */
+
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            
+            <!-- Paint Brands Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">Paint Brands 
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#berger">Berger Paints</a>
+                    <a href="#asian">Asian Paints</a>
+                    <a href="#opus">Opus Paints</a>
+                </div>
+            </div>
+            <!-- Products Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">Products 
+                    <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#decorative">Decorative Paints</a>
+                    <a href="#industrial">Industrial Coatings</a>
+                    <a href="#wood">Wood Finishes</a>
+                    <a href="#metal">Metal Paints</a>
+                </div>
+            </div>
+            
+            <a href="#services">Services</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+        
+        <!-- Auth Buttons -->
+        <div class="auth-buttons">
+            <button id="loginBtn" class="auth-btn">Login</button>
+            <button id="signupBtn" class="auth-btn">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-username">Username</label>
+                    <input type="text" id="new-username" name="new-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Password</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rest of your HTML content... -->
+    <header>
+        <h1>ABHIMANU PAINTS HOUSE</h1>
+    </header>
+    <nav>
+        <h3 class="product">Products You Will Get Here</h3>
+        
+        <div class="paint-selectors">
+            <select id="Paints">
+                <option value="Berger Paints">BERGER</option>
+                <option>WALMASTA</option>
+                <option>BISON</option>
+                <option>ANTIDUST</option>
+                <option>EASYCLEAN</option>
+                <option>SILK GLAMOUR</option>
+                <option>SILK DAZZEL</option>
+                <option>LONG LIFE FLEXO</option>
+                <option>LONG LIFE 8</option>
+            </select>
+            
+            <select id="ASIAN">
+                <option value="ASIAN Paints">ASIAN</option>
+                <option>ACE</option>
+                <option>SPARK</option>
+            </select>
+            
+            <select id="Opus">
+                <option value="opus Paints">OPUS</option>
+                <option>CALISTA PRIMER</option>
+                <option>NEO SHINE</option>
+                <option>ALLDRY WALL FIX</option>
+            </select>
+        </div>
+    </nav>
+
+    <script>
+        // Modal functionality
+        const loginBtn = document.getElementById("loginBtn");
+        const signupBtn = document.getElementById("signupBtn");
+        const loginModal = document.getElementById("loginModal");
+        const signupModal = document.getElementById("signupModal");
+        const closeButtons = document.getElementsByClassName("close");
+        
+        // Open Login Modal
+        loginBtn.onclick = function() {
+            loginModal.style.display = "block";
+        }
+        
+        // Open Sign Up Modal
+        signupBtn.onclick = function() {
+            signupModal.style.display = "block";
+        }
+        
+        // Close Modals
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                loginModal.style.display = "none";
+                signupModal.style.display = "none";
+            }
+        }
+        
+        // Close when clicking outside modal
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+            if (event.target == signupModal) {
+                signupModal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+<div id="berger" class="brand-section">
+    <h2 class="brand-title">
+        <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-32118,resizemode-75,msid-107280714/industry/cons-products/paints/100-years-of-brilliance-berger-unveils-a-colourful-tapestry-of-success.jpg" 
+             class="brand-logo" alt="Berger Paints logo"> 
+        BERGER PAINTS
+    </h2>
+    <p>
+        Berger Paints, established in 1923, is a prominent player in the global paint and coating industry. Headquartered in Kolkata, India, the company offers a diverse range of products including decorative paints, industrial coatings, and specialty solutions. Berger Paints is renowned for its innovation in color technology and commitment to sustainability, constantly evolving to meet modern aesthetic and environmental standards.
+    </p>
+    <p>
+        With a presence in over 30 countries, Berger Paints caters to both residential and commercial needs, ensuring high-quality finishes and durable products. Their extensive portfolio features paints for walls, wood, metal, and other surfaces, designed to enhance the visual appeal and longevity of various structures. The company's dedication to research and development enables them to introduce cutting-edge solutions, such as eco-friendly paints and advanced protective coatings.
+    </p>
+    <p>
+        Berger Paints is also known for its robust distribution network and strong customer service, which help maintain its reputation for reliability and excellence. By focusing on innovation and quality, Berger Paints continues to make significant contributions to the industry, shaping spaces with both functional and aesthetic value.
+    </p>
+</div>
+
+<div id="asian" class="brand-section">
+    <h2 class="brand-title">
+        <img src="https://i.pinimg.com/736x/12/b3/7c/12b37c56014bf9d0a30ecdd2fea39260.jpg" 
+             class="brand-logo" alt="Asian Paints logo">
+        ASIAN PAINTS
+    </h2>
+    <p>
+        Asian Paints, founded in 1942, is one of the largest and most renowned paint companies in Asia. Headquartered in Mumbai, India, the company has established a significant presence in over 15 countries, making it a major global player in the paint and coatings industry. Asian Paints is celebrated for its wide range of products, which include decorative paints, industrial coatings, and specialty finishes tailored to both residential and commercial applications.
+    </p>
+    <p>
+        The company is known for its innovation in color technology and customer-centric solutions. Asian Paints has pioneered digital tools such as color visualizers and virtual color consultations, enhancing the consumer experience by helping customers choose and visualize paint colors with ease. Their commitment to research and development drives continuous improvements in paint quality, durability, and environmental sustainability.
+    </p>
+    <p>
+        Asian Paints operates through a robust distribution network, ensuring its products are accessible across diverse markets. The company's dedication to quality, coupled with its focus on customer satisfaction and environmental stewardship, has cemented its reputation as a leader in the industry. By consistently delivering high-quality, innovative solutions, Asian Paints continues to shape the aesthetics of spaces worldwide.
+    </p>
+</div>
+
+<div id="opus" class="brand-section">
+    <h2 class="brand-title">
+        <img src="https://assets.birlaopus.com/is/image/grasimindustries/footer-opus-logo?ts=1715279242915&dpr=off" 
+             class="brand-logo" alt="Opus Paints logo">
+        OPUS PAINTS
+    </h2>
+    <p>
+        Opus Paint, a dynamic and emerging player in the paint industry, focuses on delivering premium painting solutions tailored to modern needs. Known for its commitment to innovation and quality, Opus Paint offers a diverse range of products designed for both residential and commercial applications. Their portfolio includes high-performance decorative paints, protective coatings, and eco-friendly options, catering to a wide array of aesthetic and functional requirements.
+    </p>
+    <p>
+        Opus Paint stands out for its emphasis on cutting-edge technology and design. The company invests significantly in research and development to ensure their products meet the latest standards in durability, color accuracy, and environmental sustainability. Their paints are formulated to provide superior coverage, longevity, and ease of application, making them a preferred choice for discerning customers.
+    </p>
+    <p>
+        The company also prioritizes customer experience, offering tailored solutions and expert guidance to help clients achieve their desired results. Opus Paint's commitment to excellence is reflected in their comprehensive service offerings and strong customer support network.
+    </p>
+    <p>
+        By blending innovation with quality and sustainability, Opus Paint is poised to make a significant impact in the industry, transforming spaces with products that combine functionality, style, and environmental responsibility.
+    </p>
+</div>
+
+<footer id="contact">
+    <h2 style="color: #5D4037;">FOR MORE INFORMATION</h2>
+    <p><strong>Name:</strong> ABHIMANU VISHWAKARMA</p>
+    <p><strong>Contact:</strong> 8329225197</p>
+    <p><strong>Email:</strong> abhivishwakarma8329@gmail.com</p>
+</footer>
+</body>
+</html>
